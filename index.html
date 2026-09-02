@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevCuriosos - Blog de Programação e Tecnologia</title>
+  <title>DevCuriosos - Blog de Programação e História da Tecnologia</title>
   <style>
     :root {
       --bg-main: #0f172a;
@@ -14,6 +14,7 @@
       --accent: #38bdf8;
       --accent-hover: #0284c7;
       --code-bg: #090d16;
+      --tag-bg: rgba(56, 189, 248, 0.12);
     }
 
     * {
@@ -26,7 +27,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg-main);
       color: var(--text-main);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     /* Header */
@@ -52,6 +53,7 @@
       font-weight: 800;
       color: var(--accent);
       text-decoration: none;
+      letter-spacing: -0.5px;
     }
 
     nav a {
@@ -69,65 +71,110 @@
     /* Layout principal */
     .container {
       max-width: 1200px;
-      margin: 2rem auto;
+      margin: 2.5rem auto;
       padding: 0 1rem;
       display: grid;
       grid-template-columns: 2.5fr 1fr;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
     /* Postagens */
     article.post {
       background-color: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 2rem;
-      margin-bottom: 2rem;
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
     }
 
     .post-tag {
       display: inline-block;
-      background-color: rgba(56, 189, 248, 0.1);
+      background-color: var(--tag-bg);
       color: var(--accent);
-      padding: 0.25rem 0.75rem;
+      padding: 0.3rem 0.8rem;
       border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .post-title {
-      font-size: 1.75rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.9rem;
+      margin-bottom: 0.6rem;
       color: #ffffff;
+      line-height: 1.3;
     }
 
     .post-meta {
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
     }
 
     .post-content {
       color: #cbd5e1;
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
 
     .post-content p {
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .post-content h3 {
+      color: #ffffff;
+      font-size: 1.3rem;
+      margin: 1.8rem 0 0.8rem;
+    }
+
+    .post-content ul, .post-content ol {
+      margin-bottom: 1.2rem;
+      padding-left: 1.5rem;
+    }
+
+    .post-content li {
+      margin-bottom: 0.5rem;
     }
 
     .code-snippet {
       background-color: var(--code-bg);
       border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 1rem;
-      font-family: "Courier New", Courier, monospace;
+      border-radius: 8px;
+      padding: 1.2rem;
+      font-family: "Fira Code", "Courier New", Courier, monospace;
       font-size: 0.9rem;
-      color: #e2e8f0;
+      color: #38bdf8;
       overflow-x: auto;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
+      line-height: 1.5;
+    }
+
+    .code-comment {
+      color: #64748b;
+    }
+
+    .code-keyword {
+      color: #f472b6;
+    }
+
+    .code-number {
+      color: #fbbf24;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 1rem;
+      border-radius: 0 8px 8px 0;
     }
 
     /* Sidebar */
@@ -140,17 +187,23 @@
     .widget {
       background-color: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 1.5rem;
+      border-radius: 12px;
+      padding: 1.8rem;
     }
 
     .widget-title {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: #ffffff;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       border-bottom: 2px solid var(--accent);
       padding-bottom: 0.4rem;
       display: inline-block;
+    }
+
+    .author-bio p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
     }
 
     .popular-list {
@@ -158,8 +211,8 @@
     }
 
     .popular-list li {
-      margin-bottom: 0.8rem;
-      padding-bottom: 0.8rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
       border-bottom: 1px solid var(--border-color);
     }
 
@@ -173,6 +226,7 @@
       color: var(--text-main);
       text-decoration: none;
       font-size: 0.95rem;
+      font-weight: 500;
       transition: color 0.2s;
     }
 
@@ -180,25 +234,91 @@
       color: var(--accent);
     }
 
+    .popular-date {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag-cloud a {
+      background: var(--code-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .tag-cloud a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Newsletter Box */
+    .newsletter-form input {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background-color: var(--code-bg);
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .newsletter-form button {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 6px;
+      border: none;
+      background-color: var(--accent);
+      color: #0f172a;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .newsletter-form button:hover {
+      background-color: var(--accent-hover);
+      color: #ffffff;
+    }
+
     /* Footer */
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 2.5rem 1rem;
       background-color: var(--bg-card);
       border-top: 1px solid var(--border-color);
       color: var(--text-muted);
-      margin-top: 3rem;
+      margin-top: 4rem;
       font-size: 0.9rem;
     }
 
     /* Responsividade */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .container {
         grid-template-columns: 1fr;
       }
+
       .header-container {
         flex-direction: column;
         gap: 1rem;
+      }
+
+      nav a {
+        margin: 0 0.75rem;
+      }
+
+      article.post {
+        padding: 1.5rem;
       }
     }
   </style>
@@ -212,6 +332,7 @@
         <a href="#">Início</a>
         <a href="#">Curiosidades</a>
         <a href="#">História Tech</a>
+        <a href="#">Algoritmos</a>
         <a href="#">Sobre</a>
       </nav>
     </div>
@@ -220,10 +341,188 @@
   <div class="container">
     <main>
 
+      <!-- ARTIGO 1: O PRIMEIRO BUG -->
       <article class="post">
         <span class="post-tag">História Tech</span>
-        <h2 class="post-title">O Primeiro "Bug" da História Foi um Inseto de Verdade</h2>
-        <div class="post-meta">Publicado em 12 de Outubro • 4 min de leitura</div>
+        <h1 class="post-title">O Primeiro "Bug" da História Foi um Inseto de Verdade</h1>
+        <div class="post-meta">
+          <span>Publicado em 12 de Outubro</span> •
+          <span>Tempo de leitura: 5 min</span> •
+          <span>Por Grace H.</span>
+        </div>
         <div class="post-content">
-          <p>Você provavelmente já passou horas procurando um erro no seu código. Mas sabia que a palavra "bug" no sentido computacional ficou famosa por conta de uma mariposa de verdade?</p>
-          <p>Em 9
+          <p>Você provavelmente já passou horas testando seu código e vasculhando linhas de instrução em busca de uma vírgula esquecida ou de um erro de lógica. Mas você sabia que o termo "bug" no sentido computacional ficou mundialmente famoso por causa de uma mariposa de verdade presa dentro de um computador?</p>
+
+          <h3>O Evento no Harvard Mark II</h3>
+          <p>Em 9 de setembro de 1947, a equipe de cientistas e engenheiros da Universidade de Harvard, liderada pela pioneira da computação <strong>Grace Hopper</strong>, trabalhava no computador eletromecânico <em>Harvard Mark II</em>. A máquina apresentou uma falha misteriosa e parou de funcionar corretamente.</p>
+
+          <p>Após horas de inspeção meticulosa nos relés (chaves eletromecânicas que faziam o processamento dos dados na época), os operadores encontraram a causa da pane no <strong>Relé #70 do Painel F</strong>: uma mariposa adulta presa entre os contatos elétricos.</p>
+
+          <blockquote>
+            "First actual case of bug being found." (Primeiro caso real de inseto encontrado.)
+            <br><small>— Anotação no diário de bordo do Harvard Mark II, 1947.</small>
+          </blockquote>
+
+          <p>O inseto foi removido com uma pinça e colado com fita adesiva no diário oficial do laboratório. O termo "bug" (inseto) já existia na engenharia mecânica desde o século XIX — usado inclusive por Thomas Edison para indicar defeitos em engrenagens —, mas esse evento consolidou para sempre os termos <strong>bug</strong> e <strong>debugging</strong> no vocabulário oficial da ciência da computação.</p>
+
+          <h3>O Relatório Preservado</h3>
+          <p>Hoje, o relatório original com a mariposa empalhada e anotada à mão encontra-se preservado no <em>National Museum of American History</em> da instituição Smithsonian, em Washington, D.C.</p>
+
+          <div class="code-snippet">
+<span class="code-comment">// Exemplo conceitual: Simulando a detecção de um "Relay Bug" em JS</span>
+<span class="code-keyword">function</span> inspectRelay(relayNumber) {
+  <span class="code-keyword">const</span> hardwareState = {
+    relay70: <span class="code-keyword">false</span>, <span class="code-comment">// Bloqueado por uma mariposa física!</span>
+  };
+
+  <span class="code-keyword">if</span> (!hardwareState[`relay${relayNumber}`]) {
+    <span class="code-keyword">throw new</span> Error(<span class="code-keyword">`Bug detectado no Relé ${relayNumber}! Remova o inseto.`</span>);
+  }
+  <span class="code-keyword">return</span> <span class="code-keyword">"Sistema operando normalmente."</span>;
+}
+          </div>
+        </div>
+      </article>
+
+      <!-- ARTIGO 2: POR QUE ARRAYS COMEÇAM EM ZERO -->
+      <article class="post">
+        <span class="post-tag">Curiosidades</span>
+        <h2 class="post-title">Por que os Arrays Começam do Zero (0) na Maioria das Linguagens?</h2>
+        <div class="post-meta">
+          <span>Publicado em 28 de Setembro</span> •
+          <span>Tempo de leitura: 4 min</span> •
+          <span>Por Alan T.</span>
+        </div>
+        <div class="post-content">
+          <p>Uma das maiores estranhezas para quem está começando na programação é descobrir que o primeiro elemento de uma lista não fica na posição 1, mas sim na posição 0. Embora pareça anti-intuitivo para o cérebro humano, essa escolha tem razões matemáticas e de arquitetura de memória profundas.</p>
+
+          <h3>A Explicação do Deslocamento (Offset)</h3>
+          <p>Em linguagens de baixo nível como C e Assembly, o nome de um array é na verdade um <strong>ponteiro de memória</strong> que aponta diretamente para o endereço de início do primeiro bloco de dados.</p>
+
+          <p>O índice do array não representa a "posição ordinal" do elemento, mas sim o <strong>deslocamento (offset)</strong> relativo ao ponto inicial da memória:</p>
+
+          <ul>
+            <li><strong>array[0]:</strong> Deslocamento de 0 bytes do endereço inicial (o primeiro elemento).</li>
+            <li><strong>array[1]:</strong> Deslocamento de 1 tamanho-de-elemento a partir do endereço inicial.</li>
+            <li><strong>array[N]:</strong> Endereço = Base + (N * Tamanho do Tipo).</li>
+          </ul>
+
+          <div class="code-snippet">
+<span class="code-comment">// Exemplo em Linguagem C: Cálculo direto do endereço de memória</span>
+<span class="code-keyword">int</span> numeros[<span class="code-number">4</span>] = {<span class="code-number">10</span>, <span class="code-number">20</span>, <span class="code-number">30</span>, <span class="code-number">40</span>};
+
+<span class="code-comment">// numeros[0] é exatamente equivalente a: *(numeros + 0)</span>
+<span class="code-comment">// numeros[1] é exatamente equivalente a: *(numeros + 1)</span>
+          </div>
+
+          <h3>O Argumento Famoso de Edsger Dijkstra</h3>
+          <p>Em 1982, o lendário cientista da computação Edsger Dijkstra escreveu o influente artigo <em>"Why numbering should start at zero"</em>. Ele provou matematicamente que declarar intervalos com limites inclusivos e exclusivos do tipo <code>0 &lt;= i &lt; N</code> evita erros de contagem por um (conhecidos como <em>off-by-one errors</em>) e torna o cálculo do tamanho do intervalo (<code>N - 0 = N</code>) extremamente elegante.</p>
+        </div>
+      </article>
+
+      <!-- ARTIGO 3: FAST INVERSE SQUARE ROOT -->
+      <article class="post">
+        <span class="post-tag">Algoritmos</span>
+        <h2 class="post-title">O Famoso Número Mágico 0x5f3759df do Quake III</h2>
+        <div class="post-meta">
+          <span>Publicado em 15 de Setembro</span> •
+          <span>Tempo de leitura: 6 min</span> •
+          <span>Por John C.</span>
+        </div>
+        <div class="post-content">
+          <p>Em 1999, o jogo <em>Quake III Arena</em> revolucionou os gráficos 3D. Para calcular iluminação e reflexos em tempo real, a engine precisava calcular o inverso da raiz quadrada de um número ($\frac{1}{\sqrt{x}}$) milhões de vezes por segundo — uma operação extremamente custosa para os processadores da época.</p>
+
+          <p>A equipe da id Software utilizou um truque matemático genial e quase assustador: o algoritmo <strong>Fast Inverse Square Root</strong>, que utiliza a constante hexadecimal de 32 bits <code>0x5f3759df</code>.</p>
+
+          <div class="code-snippet">
+<span class="code-keyword">float</span> Q_rsqrt( <span class="code-keyword">float</span> number ) {
+    <span class="code-keyword">long</span> i;
+    <span class="code-keyword">float</span> x2, y;
+    <span class="code-keyword">const float</span> threehalfs = <span class="code-number">1.5F</span>;
+
+    x2 = number * <span class="code-number">0.5F</span>;
+    y  = number;
+    i  = * ( <span class="code-keyword">long</span> * ) &amp;y;                       <span class="code-comment">// Conversão de bits de float para int</span>
+    i  = <span class="code-number">0x5f3759df</span> - ( i &gt;&gt; <span class="code-number">1</span> );               <span class="code-comment">// O "número mágico" de deslocamento de bits!</span>
+    y  = * ( <span class="code-keyword">float</span> * ) &amp;i;                      <span class="code-comment">// Reinterpretação de volta para float</span>
+    y  = y * ( threehalfs - ( x2 * y * y ) );   <span class="code-comment">// 1ª iteração do método de Newton-Raphson</span>
+
+    <span class="code-keyword">return</span> y;
+}
+          </div>
+
+          <p>O algoritmo funcionava manipula os bits do padrão IEEE 754 de ponto flutuante diretamente como inteiros, obtendo uma aproximação incrivelmente precisa com um custo computacional 400% menor do que a divisão convencional!</p>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside>
+
+      <!-- SOBRE -->
+      <div class="widget">
+        <h3 class="widget-title">Sobre o Blog</h3>
+        <div class="author-bio">
+          <p>O <strong>DevCuriosos</strong> é um espaço dedicado a explorar as origens fascinantes da computação, algoritmos históricos e os bastidores das linguagens de programação.</p>
+        </div>
+      </div>
+
+      <!-- MAIS POPULARES -->
+      <div class="widget">
+        <h3 class="widget-title">Mais Populares</h3>
+        <ul class="popular-list">
+          <li>
+            <a href="#">O Primeiro "Bug" da História Foi um Inseto de Verdade</a>
+            <span class="popular-date">12 Out • 5 min de leitura</span>
+          </li>
+          <li>
+            <a href="#">Por que os Arrays Começam do Zero?</a>
+            <span class="popular-date">28 Set • 4 min de leitura</span>
+          </li>
+          <li>
+            <a href="#">O Mistério da Constante 0x5f3759df do Quake III</a>
+            <span class="popular-date">15 Set • 6 min de leitura</span>
+          </li>
+          <li>
+            <a href="#">Quem Inventou o "Hello World"?</a>
+            <span class="popular-date">02 Set • 3 min de leitura</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div class="widget">
+        <h3 class="widget-title">Newsletter Dev</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Receba curiosidades de código e história da tecnologia no seu e-mail semanalmente.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Inscrição simulada com sucesso!');">
+          <input type="email" placeholder="seu.email@dev.com" required>
+          <button type="submit">Inscrever-se</button>
+        </form>
+      </div>
+
+      <!-- TAGS -->
+      <div class="widget">
+        <h3 class="widget-title">Nuvem de Tags</h3>
+        <div class="tag-cloud">
+          <a href="#">#historia</a>
+          <a href="#">#hardware</a>
+          <a href="#">#c-lang</a>
+          <a href="#">#javascript</a>
+          <a href="#">#algoritmos</a>
+          <a href="#">#curiosidades</a>
+          <a href="#">#jogos3d</a>
+          <a href="#">#memoria</a>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 DevCuriosos. Criado para mentes curiosas da tecnologia.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #64748b;">Feito com HTML5 e CSS3 puro. Sem frameworks pesados.</p>
+  </footer>
+
+</body>
+</html>
